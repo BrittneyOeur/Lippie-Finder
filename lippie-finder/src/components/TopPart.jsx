@@ -6,7 +6,7 @@ function Button({text, color, fontSize}){
     };
 
     return (
-        <button style={buttonStyle}>{props.text}</button>
+        <button style={buttonStyle}>{text}</button>
     );
 }
 
@@ -18,10 +18,10 @@ function TopPart() {
                 <input className="searchBar"
                         type="text"
                         name="search" 
-                        placeholder="Search lip product..." />
+                        placeholder="Search lip product..." 
+                         />
 
                 <Button text="Search" color="pink" fontSize={12}/>
-                <Button text="Filter" color="grey" fontSize={12}/>
             </div>
         </>
     );

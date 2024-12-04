@@ -6,7 +6,7 @@ import TopPart from './components/TopPart.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    
     <TopPart />
   </StrictMode>,
 )
