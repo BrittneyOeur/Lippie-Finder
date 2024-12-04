@@ -35,6 +35,10 @@ h1 {
   line-height: 1.1;
 }
 
+.searchBar:hover {
+  border-color: #ff6486;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -47,7 +51,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ff6486;
 }
 button:focus,
 button:focus-visible {

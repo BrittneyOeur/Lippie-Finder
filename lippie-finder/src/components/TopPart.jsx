@@ -19,7 +19,7 @@ function TopPart() {
                         type="text"
                         name="search" 
                         placeholder="Search lip product..." 
-                         />
+                        style={{marginRight: "10px", padding: "5px", width: "220px", transition: "border-color 0.25s"}}/>
 
                 <Button text="Search" color="pink" fontSize={12}/>
             </div>
