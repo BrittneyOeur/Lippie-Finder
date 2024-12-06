@@ -1,3 +1,6 @@
+import ProductGrid from "./ProductGrid";
+import { useNavigate } from "react-router-dom";
+
 // Functional Component
 function Button({text, color, fontSize}){
     const buttonStyle = {
@@ -11,9 +14,20 @@ function Button({text, color, fontSize}){
 }
 
 function TopPart() {
+    const navigate = useNavigate();
+
+    const handleLogoClick = () => {
+        navigate("/");
+    }
+
     return (
         <div className="topContainer">
-            <h1>Lippie Finder</h1>
+            <h1 onClick={handleLogoClick} 
+                style={{cursor: "pointer", width: "17vw", margin: "auto", marginTop: "50px", marginBottom: "20px"}}
+            >
+                    Lippie Finder
+            </h1>
+            
             <div className="container">
                 <input className="searchBar"
                         type="text"

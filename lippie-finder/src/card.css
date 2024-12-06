@@ -1,5 +1,19 @@
 .Card {
     background-color: rgb(212, 159, 159);
     width: 15vw;
-    height: 40vh;
+    height: 45vh;
+    transition: 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.Card:hover {
+    box-shadow: 0px 0px 17px 2px rgb(175, 124, 124);
+    transition: 0.3s ease;
+}
+
+.DetailSection {
+    margin: 25px;
 }
