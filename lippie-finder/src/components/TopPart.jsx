@@ -12,18 +12,18 @@ function Button({text, color, fontSize}){
 
 function TopPart() {
     return (
-        <>
+        <div className="topContainer">
             <h1>Lippie Finder</h1>
             <div className="container">
                 <input className="searchBar"
                         type="text"
                         name="search" 
                         placeholder="Search lip product..." 
-                        style={{marginRight: "10px", padding: "5px", width: "220px", transition: "border-color 0.25s"}}/>
+                        style={{marginRight: "10px", padding: "5px", width: "220px"}} />
 
                 <Button text="Search" color="pink" fontSize={12}/>
             </div>
-        </>
+        </div>
     );
 }
 

@@ -1,12 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import './containers.css'
 import './index.css'
 import App from './App.jsx'
-import TopPart from './components/TopPart.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    
-    <TopPart />
+    <App />
   </StrictMode>,
 )

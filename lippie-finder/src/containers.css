@@ -1,0 +1,26 @@
+.topContainer {
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(241, 241, 241);
+    display: inline-block;
+    width: 100%;
+    height: 20vh;
+}
+
+.searchBar {
+    border-radius: 8px;
+    border: 1px solid;
+    transition: "border-color 0.25s"
+}
+  
+.searchBar:hover {
+    border-color: #ff6486;
+}
+
+.containerGrid {
+    background-color: rgb(247, 218, 218);
+    height: 100%;
+    display: grid;
+    padding-top: 60px;
+    justify-content: center;
+}
