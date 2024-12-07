@@ -4,13 +4,37 @@ import { useNavigate } from "react-router";
 
 function ProductGrid() {
     const [products, setProducts] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+
     const navigate = useNavigate();
 
     useEffect(() => {
         fetch("http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick")
-            .then((response) => response.json())
-            .then((data) => setProducts(data))
+            .then((response) => {
+                if (response.status >= 400) {
+                    throw new Error("ERROR: Server error");
+                }
+                return response.json();
+            })
+
+            .then((data) => {
+                setProducts(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                setError(error.message);
+                setLoading(false);
+            })  
     }, []);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>
+    }
 
     const handleCardClick = (id) => {
         navigate(`/product/${id}`);

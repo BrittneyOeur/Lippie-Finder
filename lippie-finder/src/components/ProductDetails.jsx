@@ -15,6 +15,9 @@
 function ProductDetails() {
     return (
         <>
+            <div className="containerGrid">
+                
+            </div>
         </>
     );
 }
