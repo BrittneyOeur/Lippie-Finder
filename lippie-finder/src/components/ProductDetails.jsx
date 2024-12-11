@@ -12,10 +12,52 @@
  where they are able to purchase the product
 */
 
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import '/src/details.css'
+
 function ProductDetails() {
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
+    const [backgroundColor, setBackGroundColor] = useState(null);
+
+    useEffect(() => {
+        fetch(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`)
+            .then((response) => response.json())
+            .then((data) => setProduct(data));
+    }, [id]);
+
+    if (!product) {
+        return <p>Loading...</p>;
+    }
+
+    const colors = product.product_colors;
+
+    const changeBackgroundColor = (color) => {
+        setBackGroundColor(color);
+    }
+
     return (
         <>
-            <div className="containerGrid">
+            <div className="containerGrid" style={{ backgroundColor: backgroundColor }}>
+                <div className="anotherContainer" style={{ display: "flex", flexDirection: "row", margin: "auto", backgroundColor: "grey"}}>
+                    <div className="productSection" style={{ backgroundColor: "white"}}>
+                        <h1>{product.name}</h1>
+                        <img src={product.api_featured_image} alt={product.name} style={{width: "20vw", margin: "auto"}}/>
+                        <p>{product.brand}</p>
+                        <p>{product.price}</p>
+                    </div>
+                    <div className="productDescription" style={{ padding: "50px", textAlign: "left"}}>
+                        <div className="productColors" style={{  display: "flex", margin: "auto", gap: "15px"  }}>
+                            <h2>Select color: </h2>
+                            {colors.map((color, index) => (
+                                <p className="colors" key={index} onClick={() => changeBackgroundColor(color.hex_value)} style={{ cursor: "pointer" }}>{color.colour_name}</p>
+                            ))}
+                        </div>
+                        <h2 style={{  }}>Description: </h2>  
+                        <p>{product.description}</p>   
+                    </div>
+                </div>
                 
             </div>
         </>

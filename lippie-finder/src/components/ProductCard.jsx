@@ -27,9 +27,3 @@ function ProductCard({ product, onClick }) {
 }
 
 export default ProductCard;
-
-                /*
-                <p style={{fontSize: "20px"}}>{product.name}</p>
-                <p>{product.brand}</p>
-                <p>${toUSD}</p>
-                */
