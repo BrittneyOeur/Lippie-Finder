@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
+import Filter from "./Filter"
 
 // Functional Component for reusable Button
 function Button({ text, color, width, fontSize, onClick }) {
@@ -26,11 +27,19 @@ Modal.setAppElement("#root");
 
 function TopPart() {
     const [showModal, setShowModal] = useState(false);
+    const [filters, setFilters] = useState({
+        brand: "",
+        price: ""
+    });
 
     const navigate = useNavigate();
 
     const handleLogoClick = () => {
         navigate("/");
+    };
+
+    const handleFilterChange = (filterType, value) => {
+        setFilters((prev) => ({...prev, [filterType]: value}));
     };
 
     return (
@@ -94,18 +103,8 @@ function TopPart() {
                     },
                 }}
             >
-                <h2>Filter Options</h2>
-                <p>Select your desired filters:</p>
-                {/* Add filter options here */}
-                <div style={{ marginTop: "20px" }}>
-                    <Button
-                        text="Close"
-                        color="black"
-                        width="80px"
-                        fontSize={12}
-                        onClick={() => setShowModal(false)}
-                    />
-                </div>
+                <Filter filters={filters} onFilterChange={handleFilterChange} />
+                
             </Modal>
         </div>
     );
