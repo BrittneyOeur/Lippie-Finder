@@ -45,7 +45,7 @@ function Filter({ filters, onFilterChange }) {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>Loading options...</div>;
     }
 
     if (error) {
@@ -62,10 +62,10 @@ function Filter({ filters, onFilterChange }) {
                     <div className="filter-options" style={{ display: "flex" }}>
                         <h1>BRAND</h1>
                         <h2
-                            style={{ cursor: "pointer", color: "blue" }}
+                            style={{ cursor: "pointer", color: "blue", paddingTop: "5px", marginLeft: "300px", fontWeight: "900", fontSize: "50px" }}
                             onClick={() => setCurrentPage("brand")}
                         >
-                            B
+                            &gt;
                         </h2>
                     </div>
                 </div>
