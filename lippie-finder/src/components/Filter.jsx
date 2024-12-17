@@ -210,7 +210,7 @@ function Filter({ filters, onFilterChange }) {
                     <button onClick={handleBack} style={{ marginTop: "10px" }}>
                         Back
                     </button>
-                    <ul style={{ padding: 0 }}>
+                    <ul style={{ padding: "10px", backgroundColor: "red" }}>
                     {tags.map((tag) => {
                             return (
                                 <FilterList
