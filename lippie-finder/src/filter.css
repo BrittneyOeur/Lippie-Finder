@@ -1,4 +1,19 @@
 .specific-filter {
     margin-right: 20px; 
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options:hover {
+    color: red;
+}
+
+.option-arrow {
+    cursor: pointer;
+    color: pink;
+    font-weight: 500;
+    font-size: 30px;
+    text-align: right;
+    margin: 0;
 }

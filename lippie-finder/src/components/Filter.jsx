@@ -1,16 +1,20 @@
-import '/src/filter.css'
+import '/src/filter.css';
 import React, { useEffect, useState } from "react";
 
-function FilterList({ text, onClick }) {
+function FilterList({ text, onClick, isSelected }) {
     const filterStyle = {
-        cursor: "pointer",
         listStyle: "none",
-        width: 0,
+        padding: "10px",
+        justifyContent: "center",
+        alignItems: "center",
+        display: "flex",
+        backgroundColor: isSelected ? "lightblue" : "white",
+        cursor: "pointer",
     };
 
     return (
         <li style={filterStyle} onClick={onClick}>
-            {text}
+            <span>{text}</span>
         </li>
     );
 }
@@ -34,17 +38,14 @@ async function FetchDataOptions() {
         const tagSet = new Set();
 
         data.forEach((item) => {
-            // Extract brands
             if (item.brand && !brandSet.has(item.brand)) {
                 brands.push(item.brand);
                 brandSet.add(item.brand);
             }
-            // Extract categories
             if (item.category && !categorySet.has(item.category)) {
                 categories.push(item.category);
                 categorySet.add(item.category);
             }
-            // Extract product tags
             if (item.tag_list && Array.isArray(item.tag_list)) {
                 item.tag_list.forEach((tag) => {
                     if (!tagSet.has(tag)) {
@@ -61,8 +62,6 @@ async function FetchDataOptions() {
     }
 }
 
-
-
 function Filter({ filters, onFilterChange }) {
     const [currentPage, setCurrentPage] = useState("main");
 
@@ -73,8 +72,40 @@ function Filter({ filters, onFilterChange }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const [selectedBrands, setSelectedBrands] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedTags, setSelectedTags] = useState([]);
+
     const handleBack = () => {
         setCurrentPage("main");
+    };
+
+    const handleSelection = (filterType, option) => {
+        switch (filterType) {
+            case "brand":
+                setSelectedBrands((prev) =>
+                    prev.includes(option)
+                        ? prev.filter((item) => item !== option)
+                        : [...prev, option]
+                );
+                break;
+            case "category":
+                setSelectedCategories((prev) =>
+                    prev.includes(option)
+                        ? prev.filter((item) => item !== option)
+                        : [...prev, option]
+                );
+                break;
+            case "tag":
+                setSelectedTags((prev) =>
+                    prev.includes(option)
+                        ? prev.filter((item) => item !== option)
+                        : [...prev, option]
+                );
+                break;
+            default:
+                break;
+        }
     };
 
     useEffect(() => {
@@ -97,7 +128,6 @@ function Filter({ filters, onFilterChange }) {
         fetchData();
     }, []);
 
-
     if (loading) {
         return <div>Loading options...</div>;
     }
@@ -110,59 +140,43 @@ function Filter({ filters, onFilterChange }) {
         <div className="filter-container">
             {currentPage === "main" && (
                 <div>
-                    <div>
-                        <h1>Filter Options</h1>
-                    </div>
+                    <h1>Filter Options</h1>
                     <div className="filter-options">
-                        <div className="specific-filter" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <h2 className="filter-section" style={{ display: "flex" }}>BRAND</h2>
-                            <h2
-                                style={{
-                                    cursor: "pointer",
-                                    color: "pink",
-                                    fontWeight: "500",
-                                    fontSize: "30px",
-                                    textAlign: "right",
-                                    margin: 0
-                                }}
-                                onClick={() => setCurrentPage("brand")}
-                            >
+                        <div className="specific-filter">
+                            <h2>BRAND</h2>
+                            <h2 className="option-arrow" onClick={() => setCurrentPage("brand")}>
                                 &gt;
                             </h2>
                         </div>
 
-                        <div className="specific-filter" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <h2 className="filter-section">CATEGORY</h2>
-                            <h2
-                                style={{
-                                    cursor: "pointer",
-                                    color: "pink",
-                                    fontWeight: "500",
-                                    fontSize: "30px",
-                                    textAlign: "right",
-                                    margin: 0                             
-                                }}
-                                onClick={() => setCurrentPage("category")}
-                            >
+                        <div className="specific-filter">
+                            <h2>CATEGORY</h2>
+                            <h2 className="option-arrow" onClick={() => setCurrentPage("category")}>
                                 &gt;
                             </h2>
                         </div>
 
-                        <div className="specific-filter" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <div className="specific-filter">
                             <h2>INGREDIENTS</h2>
-                            <h2
-                                style={{
-                                    cursor: "pointer",
-                                    color: "pink",
-                                    fontWeight: "500",
-                                    fontSize: "30px",
-                                    textAlign: "right",
-                                    margin: 0
-                                }}
-                                onClick={() => setCurrentPage("ingredient")}
-                            >
+                            <h2 className="option-arrow" onClick={() => setCurrentPage("ingredient")}>
                                 &gt;
                             </h2>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2>Selected Options:</h2>
+                        <div>
+                            <h3>Brands:</h3>
+                            <p>{selectedBrands.join(", ") || "None"}</p>
+                        </div>
+                        <div>
+                            <h3>Categories:</h3>
+                            <p>{selectedCategories.join(", ") || "None"}</p>
+                        </div>
+                        <div>
+                            <h3>Ingredients:</h3>
+                            <p>{selectedTags.join(", ") || "None"}</p>
                         </div>
                     </div>
                 </div>
@@ -170,16 +184,17 @@ function Filter({ filters, onFilterChange }) {
 
             {currentPage === "brand" && (
                 <div>
-                    <h1>Choose brand</h1>
-                    <button onClick={handleBack} style={{ marginTop: "10px" }}>
-                        Back
-                    </button>
+                    <p onClick={handleBack} style={{ cursor: "pointer" }}>
+                        &lt; Back
+                    </p>
+                    <h1>Choose Brand</h1>
                     <ul style={{ padding: 0 }}>
                         {brands.map((brand) => (
                             <FilterList
                                 key={brand}
                                 text={brand}
-                                onClick={() => onFilterChange("brand", brand)}
+                                onClick={() => handleSelection("brand", brand)}
+                                isSelected={selectedBrands.includes(brand)}
                             />
                         ))}
                     </ul>
@@ -188,16 +203,17 @@ function Filter({ filters, onFilterChange }) {
 
             {currentPage === "category" && (
                 <div>
-                    <h1>Choose category</h1>
-                    <button onClick={handleBack} style={{ marginTop: "10px" }}>
-                        Back
-                    </button>
-                    <ul style={{ backgroundColor: "red" }}>
+                    <p onClick={handleBack} style={{ cursor: "pointer" }}>
+                        &lt; Back
+                    </p>
+                    <h1>Choose Category</h1>
+                    <ul style={{ padding: 0 }}>
                         {categories.map((category) => (
                             <FilterList
                                 key={category}
                                 text={category}
-                                onClick={() => onFilterChange("category", category)}
+                                onClick={() => handleSelection("category", category)}
+                                isSelected={selectedCategories.includes(category)}
                             />
                         ))}
                     </ul>
@@ -206,20 +222,19 @@ function Filter({ filters, onFilterChange }) {
 
             {currentPage === "ingredient" && (
                 <div>
-                    <h1>Choose ingredient</h1>
-                    <button onClick={handleBack} style={{ marginTop: "10px" }}>
-                        Back
-                    </button>
-                    <ul style={{ padding: "10px", backgroundColor: "red" }}>
-                    {tags.map((tag) => {
-                            return (
-                                <FilterList
-                                    key={tag}
-                                    text={tag}
-                                    onClick={() => onFilterChange("tag", tag)}
-                                />
-                            );
-                        })}
+                    <p onClick={handleBack} style={{ cursor: "pointer" }}>
+                        &lt; Back
+                    </p>
+                    <h1>Choose Ingredient</h1>
+                    <ul style={{ padding: 0 }}>
+                        {tags.map((tag) => (
+                            <FilterList
+                                key={tag}
+                                text={tag}
+                                onClick={() => handleSelection("tag", tag)}
+                                isSelected={selectedTags.includes(tag)}
+                            />
+                        ))}
                     </ul>
                 </div>
             )}
