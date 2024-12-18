@@ -8,7 +8,7 @@ function FilterList({ text, onClick, isSelected }) {
         justifyContent: "center",
         alignItems: "center",
         display: "flex",
-        backgroundColor: isSelected ? "lightblue" : "white",
+        backgroundColor: isSelected ? "darkpink" : "white",
         cursor: "pointer",
     };
 

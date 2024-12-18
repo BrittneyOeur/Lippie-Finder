@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'Delius';
+  src: url('./assets/DeliusSwashCaps-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Delius', cursive;
   line-height: 1.5;
   font-weight: 400;
 
