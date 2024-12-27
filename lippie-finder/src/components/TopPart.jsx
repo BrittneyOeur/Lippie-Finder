@@ -103,7 +103,11 @@ function TopPart() {
                     },
                 }}
             >
-                <Filter filters={filters} onFilterChange={handleFilterChange} />
+                <Filter filters={filters} onFilterChange={(newFilters) => {
+                    setShowModal(false); // Close modal after confirming
+                    onFilterChange(newFilters);
+                }} />
+
                 
             </Modal>
         </div>

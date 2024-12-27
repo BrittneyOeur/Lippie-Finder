@@ -81,6 +81,7 @@ function Filter({ filters, onFilterChange }) {
     };
 
     const handleSelection = (filterType, option) => {
+
         switch (filterType) {
             case "brand":
                 setSelectedBrands((prev) =>
@@ -181,9 +182,19 @@ function Filter({ filters, onFilterChange }) {
                     </div>
 
                     <div>
-                        <button>CONFIRM</button>
-                        <button>RESET</button>
+                        <button onClick={() => onFilterChange({ brand: selectedBrands, category: selectedCategories, tag: selectedTags })}>
+                            CONFIRM
+                        </button>
+                        <button onClick={() => {
+                            setSelectedBrands([]);
+                            setSelectedCategories([]);
+                            setSelectedTags([]);
+                            onFilterChange({ brand: [], category: [], tag: [] });
+                        }}>
+                            RESET
+                        </button>
                     </div>
+
                 </div>
             )}
 

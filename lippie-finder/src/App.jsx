@@ -1,18 +1,29 @@
 import TopPart from './components/TopPart';
 import ProductGrid from './components/ProductGrid';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetails from './components/ProductDetails';
+import React, { useState } from "react";
 
 function App() {
-  return (
-    <Router>
-      <TopPart />
-      <Routes>
-        <Route path="/" element={<ProductGrid />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-      </Routes>
-    </Router>
-  );
+    const [filters, setFilters] = useState({
+        brand: [],
+        category: [],
+        tag: [],
+    });
+
+    const handleFilterChange = (newFilters) => {
+        setFilters(newFilters);
+    };
+
+    return (
+        <Router>
+            <TopPart onFilterChange={handleFilterChange} filters={filters} />
+            <Routes>
+                <Route path="/" element={<ProductGrid filters={filters} />} />
+                <Route path="/product/:id" element={<ProductDetails />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
