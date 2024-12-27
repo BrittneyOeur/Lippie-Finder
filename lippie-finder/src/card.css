@@ -1,7 +1,7 @@
 .Card {
     background-color: rgb(212, 159, 159);
     width: 15vw;
-    height: 45vh;
+    max-height: (50%, 40vh);
     transition: 0.3s ease;
     justify-content: center;
     align-items: center;
