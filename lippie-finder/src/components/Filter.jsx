@@ -8,7 +8,7 @@ function FilterList({ text, onClick, isSelected }) {
         justifyContent: "center",
         alignItems: "center",
         display: "flex",
-        backgroundColor: isSelected ? "darkpink" : "white",
+        backgroundColor: isSelected ? "pink" : "white",
         cursor: "pointer",
     };
 
@@ -178,6 +178,11 @@ function Filter({ filters, onFilterChange }) {
                             <h3>Ingredients:</h3>
                             <p>{selectedTags.join(", ") || "None"}</p>
                         </div>
+                    </div>
+
+                    <div>
+                        <button>CONFIRM</button>
+                        <button>RESET</button>
                     </div>
                 </div>
             )}
