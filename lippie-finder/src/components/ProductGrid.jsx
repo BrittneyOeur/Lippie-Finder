@@ -2,7 +2,7 @@ import ProductCard from "./ProductCard";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-function ProductGrid({ filters }) {
+function ProductGrid({ search, filters }) {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -27,8 +27,9 @@ function ProductGrid({ filters }) {
                   queryParams.push(`tag_list=${filters.tag.join(",")}`);
               }
   
-              const queryString = queryParams.length > 0 ? `?${queryParams.join("&")}` : "";
-              const response = await fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
+              const queryString = queryParams.length > 0 ? `&${queryParams.join("&")}` : "";
+                const response = await fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
+
   
               if (!response.ok) {
                   throw new Error("ERROR: Server error");

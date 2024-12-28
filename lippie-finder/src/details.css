@@ -6,3 +6,26 @@
 .colors:hover {
     color: rgb(221, 221, 221);
 }
+
+.anotherContainer {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.28);
+    position: relative;
+}
+
+.productColors {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    gap: 15px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+a {
+    text-align: center;
+    justify-content: center;
+    color: rgb(199, 108, 123);
+}

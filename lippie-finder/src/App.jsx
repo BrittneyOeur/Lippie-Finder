@@ -17,7 +17,7 @@ function App() {
 
     return (
         <Router>
-            <TopPart onFilterChange={handleFilterChange} filters={filters} />
+            <TopPart filters={filters} onFilterChange={handleFilterChange} />
             <Routes>
                 <Route path="/" element={<ProductGrid filters={filters} />} />
                 <Route path="/product/:id" element={<ProductDetails />} />

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import Filter from "./Filter"
+import ProductGrid from "./ProductGrid";
 
 // Functional Component for reusable Button
 function Button({ text, color, width, fontSize, onClick }) {
@@ -25,12 +26,9 @@ function Button({ text, color, width, fontSize, onClick }) {
 // Set app root for accessibility
 Modal.setAppElement("#root");
 
-function TopPart() {
+function TopPart({ filters, onFilterChange }) {
     const [showModal, setShowModal] = useState(false);
-    const [filters, setFilters] = useState({
-        brand: "",
-        price: ""
-    });
+    const [searchInput, setSearchInput] = useState("");
 
     const navigate = useNavigate();
 
@@ -40,6 +38,13 @@ function TopPart() {
 
     const handleFilterChange = (filterType, value) => {
         setFilters((prev) => ({...prev, [filterType]: value}));
+    };
+
+    // Handles search click
+    const handleSearchClick = (userInput) => {
+        <ProductGrid
+            search={userInput}
+        />
     };
 
     return (
@@ -65,8 +70,13 @@ function TopPart() {
                     placeholder="Search lip product..."
                     style={{ marginRight: "10px", padding: "6px", width: "220px" }}
                 />
-
-                <Button text="Search" color="white" width="70px" fontSize={12} />
+                <Button 
+                    text="Search" 
+                    color="white" 
+                    width="70px" 
+                    fontSize={12}
+                    onClick={() => handleSearchClick(userText)} 
+                />
             </div>
 
             <div

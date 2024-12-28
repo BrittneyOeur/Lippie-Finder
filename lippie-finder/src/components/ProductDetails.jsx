@@ -20,6 +20,7 @@ function ProductDetails() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [backgroundColor, setBackGroundColor] = useState(null);
+    const [selectedColor, setSelectedColor] = useState(null); // Track the selected color
 
     useEffect(() => {
         fetch(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`)
@@ -35,30 +36,38 @@ function ProductDetails() {
 
     const changeBackgroundColor = (color) => {
         setBackGroundColor(color);
+        setSelectedColor(color); // Track the selected color
     }
 
     return (
         <>
             <div className="containerGrid" style={{ backgroundColor: backgroundColor, paddingLeft: "300px", paddingRight: "300px" }}>
-                <div className="anotherContainer" style={{ display: "flex", flexDirection: "row", margin: "auto", backgroundColor: "rgba(0, 0, 0, 0.28)" }}>
+                <div className="anotherContainer">
                     <div className="productSection" style={{ backgroundColor: "white" }}>
                         <h1>{product.name}</h1>
                         <img src={product.api_featured_image} alt={product.name} style={{width: "15vw", margin: "auto"}}/>
-                        <a href="{product.website_link}">{product.brand}</a>
+                        <a href={product.website_link}>{product.brand}</a>
                         <p>{product.price}</p>
                     </div>
-                    <div className="productDescription" style={{ padding: "50px", textAlign: "left", color: "white" }}>
-                        <div className="productColors" style={{  display: "flex", margin: "auto", gap: "15px" }}>
+                    <div className="productDescription" style={{ padding: "50px", textAlign: "left", color: "white", overflow: "hidden", width: "50vw" }}>
+                        <div className="productColors">
                             <h2>Select color: </h2>
                             {colors.map((color, index) => (
-                                <p className="colors" key={index} onClick={() => changeBackgroundColor(color.hex_value)} style={{ cursor: "pointer" }}>{color.colour_name}</p>
+                                <p 
+                                    className="colors" 
+                                    key={index} 
+                                    onClick={() => changeBackgroundColor(color.hex_value)} 
+                                    style={{ cursor: "pointer", color: selectedColor === color.hex_value ? "black" : "white", // Highlight the selected color
+                                    }}
+                                >
+                                    {color.colour_name}
+                                </p>
                             ))}
                         </div>
                         <h2>Description: </h2>  
                         <p>{product.description}</p>   
                     </div>
-                </div>
-                
+                </div> 
             </div>
         </>
     );
