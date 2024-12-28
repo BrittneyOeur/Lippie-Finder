@@ -18,13 +18,13 @@ function ProductGrid({ search, filters }) {
               const queryParams = [];
   
               if (filters.brand.length > 0) {
-                  queryParams.push(filters.brand.map((brand) => `brand=${encodeURIComponent(brand)}`).join("&"));
+                  queryParams.push(filters.brand.map((brand) => `brand=${(brand)}`).join("&"));
               }
               if (filters.category.length > 0) {
-                  queryParams.push(filters.category.map((tag) => `category=${encodeURIComponent(category)}`).join("&"));
+                  queryParams.push(filters.category.map((tag) => `category=${(category)}`).join("&"));
               }
               if (filters.tag.length > 0) {
-                  queryParams.push(filters.tag.map((tag) => `tag_list=${encodeURIComponent(tag)}`).join("&"));
+                  queryParams.push(filters.tag.map((tag) => `tag_list=${(tag)}`).join("&"));
               }
   
               const queryString = queryParams.length > 0 ? `&${queryParams.join("&")}` : "";
