@@ -1,6 +1,7 @@
 /* 
  Page includes detailed information on an specific product, which will include:
  - Brand Name
+ - Product Type
  - Product Name
  - Price
  - Description
@@ -64,6 +65,11 @@ function ProductDetails() {
                                 </p>
                             ))}
                         </div>
+                        <div style={{ display: "flex"}}>
+                            <h2>Type: </h2>
+                            <p style={{ padding: "11px", textTransform: "capitalize" }}>{product.product_type}</p>
+                        </div>
+                        
                         <h2>Description: </h2>  
                         <p>{product.description}</p>   
                     </div>

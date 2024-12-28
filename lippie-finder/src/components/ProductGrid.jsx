@@ -18,17 +18,19 @@ function ProductGrid({ search, filters }) {
               const queryParams = [];
   
               if (filters.brand.length > 0) {
-                  queryParams.push(`brand=${filters.brand.join(",")}`);
+                  queryParams.push(filters.brand.map((brand) => `brand=${encodeURIComponent(brand)}`).join("&"));
               }
               if (filters.category.length > 0) {
-                  queryParams.push(`category=${filters.category.join(",")}`);
+                  queryParams.push(filters.category.map((tag) => `category=${encodeURIComponent(category)}`).join("&"));
               }
               if (filters.tag.length > 0) {
-                  queryParams.push(`tag_list=${filters.tag.join(",")}`);
+                  queryParams.push(filters.tag.map((tag) => `tag_list=${encodeURIComponent(tag)}`).join("&"));
               }
   
               const queryString = queryParams.length > 0 ? `&${queryParams.join("&")}` : "";
                 const response = await fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
+                console.log(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
+
 
   
               if (!response.ok) {
