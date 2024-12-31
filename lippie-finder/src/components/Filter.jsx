@@ -170,7 +170,9 @@ function Filter({ filters, onFilterChange }) {
                     </div>
 
                     <div>
-                        <button onClick={() => onFilterChange({ brand: selectedBrands, category: selectedCategories, tag: selectedTags })}>
+                        <button 
+                            style={{margin: "10px"}} 
+                            onClick={() => onFilterChange({ brand: selectedBrands, category: selectedCategories, tag: selectedTags })}>
                             CONFIRM
                         </button>
                         <button onClick={() => {
