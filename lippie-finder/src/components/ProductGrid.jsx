@@ -21,10 +21,10 @@ function ProductGrid({ search, filters }) {
                   queryParams.push(filters.brand.map((brand) => `brand=${(brand)}`).join("&"));
               }
               if (filters.category.length > 0) {
-                  queryParams.push(filters.category.map((tag) => `category=${(category)}`).join("&"));
+                  queryParams.push(filters.category.map((category) => `product_category=${(category)}`).join("&"));
               }
               if (filters.tag.length > 0) {
-                  queryParams.push(filters.tag.map((tag) => `tag_list=${(tag)}`).join("&"));
+                  queryParams.push(filters.tag.map((tag) => `product_tags=${(tag)}`).join("&"));
               }
   
               const queryString = queryParams.length > 0 ? `&${queryParams.join("&")}` : "";

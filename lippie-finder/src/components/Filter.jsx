@@ -84,25 +84,13 @@ function Filter({ filters, onFilterChange }) {
 
         switch (filterType) {
             case "brand":
-                setSelectedBrands((prev) =>
-                    prev.includes(option)
-                        ? prev.filter((item) => item !== option)
-                        : [...prev, option]
-                );
+                setSelectedBrands([option]);
                 break;
             case "category":
-                setSelectedCategories((prev) =>
-                    prev.includes(option)
-                        ? prev.filter((item) => item !== option)
-                        : [...prev, option]
-                );
+                setSelectedCategories([option]);
                 break;
             case "tag":
-                setSelectedTags((prev) =>
-                    prev.includes(option)
-                        ? prev.filter((item) => item !== option)
-                        : [...prev, option]
-                );
+                setSelectedTags([option]);
                 break;
             default:
                 break;
