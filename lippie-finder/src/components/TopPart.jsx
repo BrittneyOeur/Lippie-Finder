@@ -36,10 +36,6 @@ function TopPart({ filters, onFilterChange }) {
         navigate("/");
     };
 
-    const handleFilterChange = (filterType, value) => {
-        setFilters((prev) => ({...prev, [filterType]: value}));
-    };
-
     // Handles search click
     const handleSearchClick = (userInput) => {
         <ProductGrid
@@ -90,8 +86,6 @@ function TopPart({ filters, onFilterChange }) {
                     fontSize={12}
                     onClick={() => setShowModal(true)}
                 />
-
-                <Button text="Sort" color="white" width="100px" fontSize={12} />
             </div>
 
             {/* Modal */}
@@ -116,9 +110,7 @@ function TopPart({ filters, onFilterChange }) {
                 <Filter filters={filters} onFilterChange={(newFilters) => {
                     setShowModal(false); // Close modal after confirming
                     onFilterChange(newFilters);
-                }} />
-
-                
+                }} />       
             </Modal>
         </div>
     );

@@ -76,26 +76,39 @@ function Filter({ filters, onFilterChange }) {
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
 
+    {/* Goes back to the main page */}
     const handleBack = () => {
         setCurrentPage("main");
     };
 
+    {/* Includes all the possible options for each filter types */}
     const handleSelection = (filterType, option) => {
-
         switch (filterType) {
             case "brand":
-                setSelectedBrands([option]);
+                setSelectedBrands((prevSelected) => 
+                    prevSelected.includes(option) 
+                    ? []  // Deselect if already selected
+                    : [option]  // Select the new option
+                );
                 break;
             case "category":
-                setSelectedCategories([option]);
+                setSelectedCategories((prevSelected) => 
+                    prevSelected.includes(option) 
+                    ? []  // Deselect if already selected
+                    : [option]  // Select the new option
+                );
                 break;
             case "tag":
-                setSelectedTags([option]);
+                setSelectedTags((prevSelected) => 
+                    prevSelected.includes(option) 
+                    ? []  // Deselect if already selected
+                    : [option]  // Select the new option
+                );
                 break;
             default:
                 break;
         }
-    };
+    };    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -152,23 +165,6 @@ function Filter({ filters, onFilterChange }) {
                             </h2>
                         </div>
                     </div>
-
-                    <div>
-                        <h2>Selected Options:</h2>
-                        <div>
-                            <h3>Brands:</h3>
-                            <p>{selectedBrands.join(", ") || "None"}</p>
-                        </div>
-                        <div>
-                            <h3>Categories:</h3>
-                            <p>{selectedCategories.join(", ") || "None"}</p>
-                        </div>
-                        <div>
-                            <h3>Ingredients:</h3>
-                            <p>{selectedTags.join(", ") || "None"}</p>
-                        </div>
-                    </div>
-
                     <div>
                         <button 
                             style={{margin: "10px"}} 
@@ -179,6 +175,7 @@ function Filter({ filters, onFilterChange }) {
                             setSelectedBrands([]);
                             setSelectedCategories([]);
                             setSelectedTags([]);
+                            localStorage.removeItem("filters");
                             onFilterChange({ brand: [], category: [], tag: [] });
                         }}>
                             RESET
