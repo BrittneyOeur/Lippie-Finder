@@ -61,10 +61,10 @@ function TopPart({ filters, onFilterChange, onSearch, onResetProducts }) {
                     className="searchBar"
                     type="text"
                     name="search"
-                    placeholder="Search lip product..."
+                    placeholder="Search lip brand..."
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
-                    style={{ marginRight: "10px", padding: "6px", width: "220px" }}
+                    style={{ marginRight: "10px", padding: "9px", width: "220px" }}
                 />
                 <Button
                     text="Search"

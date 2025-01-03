@@ -47,7 +47,7 @@ function ProductDetails() {
                     <div className="productSection" style={{ backgroundColor: "white" }}>
                         <h1>{product.name}</h1>
                         <img src={product.api_featured_image} alt={product.name} style={{width: "15vw", margin: "auto"}}/>
-                        <a href={product.website_link}>{product.brand}</a>
+                        <a href={product.website_link} style={{ display: "flex", justifyContent: "center", textAlign: "center"}}>{product.brand}</a>
                         <p>{product.price}</p>
                     </div>
                     <div className="productDescription" style={{ padding: "50px", textAlign: "left", color: "white", overflow: "hidden", width: "50vw" }}>
@@ -67,7 +67,7 @@ function ProductDetails() {
                         </div>
                         <div style={{ display: "flex"}}>
                             <h2>Type: </h2>
-                            <p style={{ padding: "11px", textTransform: "capitalize" }}>{product.product_type}</p>
+                            <p style={{ padding: "9px", textTransform: "capitalize", fontSize: "18px" }}>{(product.category).replace("_", " ")}</p>
                         </div>
                         
                         <h2>Description: </h2>  
