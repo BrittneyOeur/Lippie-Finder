@@ -26,10 +26,14 @@ function ProductGrid({ search, filters }) {
                 if (filters.tag.length > 0) {
                     queryParams.push(filters.tag.map((tag) => `product_tags=${(tag)}`).join("&"));
                 }
+
+                if (search) {
+                    queryParams.push(`brand=${encodeURIComponent(search)}`);
+                }
     
                 const queryString = queryParams.length > 0 ? `&${queryParams.join("&")}` : "";
-                    const response = await fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
-                    console.log(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
+                const response = await fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
+                console.log(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
     
                 if (!response.ok) {
                     throw new Error("ERROR: Server error");
@@ -45,7 +49,7 @@ function ProductGrid({ search, filters }) {
         };
     
         fetchFilteredProducts();
-    }, [filters]); // Re-run whenever filters change
+    }, [search, filters]); // Re-run whenever filters change
     
 
     if (loading) {

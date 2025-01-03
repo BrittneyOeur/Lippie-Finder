@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
-import Filter from "./Filter"
-import ProductGrid from "./ProductGrid";
+import Filter from "./Filter";
 
 // Functional Component for reusable Button
 function Button({ text, color, width, fontSize, onClick }) {
@@ -26,21 +25,20 @@ function Button({ text, color, width, fontSize, onClick }) {
 // Set app root for accessibility
 Modal.setAppElement("#root");
 
-function TopPart({ filters, onFilterChange }) {
+function TopPart({ filters, onFilterChange, onSearch, onResetProducts }) {
     const [showModal, setShowModal] = useState(false);
     const [searchInput, setSearchInput] = useState("");
 
     const navigate = useNavigate();
 
     const handleLogoClick = () => {
+        setSearchInput("");
+        onResetProducts();
         navigate("/");
     };
 
-    // Handles search click
-    const handleSearchClick = (userInput) => {
-        <ProductGrid
-            search={userInput}
-        />
+    const handleSearchClick = () => {
+        onSearch(searchInput); // Pass the search input up to the parent
     };
 
     return (
@@ -64,14 +62,16 @@ function TopPart({ filters, onFilterChange }) {
                     type="text"
                     name="search"
                     placeholder="Search lip product..."
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
                     style={{ marginRight: "10px", padding: "6px", width: "220px" }}
                 />
-                <Button 
-                    text="Search" 
-                    color="white" 
-                    width="70px" 
+                <Button
+                    text="Search"
+                    color="white"
+                    width="70px"
                     fontSize={12}
-                    onClick={() => handleSearchClick(userText)} 
+                    onClick={handleSearchClick}
                 />
             </div>
 
@@ -103,14 +103,17 @@ function TopPart({ filters, onFilterChange }) {
                         textAlign: "center",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
                         right: "0%",
-                        left: "auto"
+                        left: "auto",
                     },
                 }}
             >
-                <Filter filters={filters} onFilterChange={(newFilters) => {
-                    setShowModal(false); // Close modal after confirming
-                    onFilterChange(newFilters);
-                }} />       
+                <Filter
+                    filters={filters}
+                    onFilterChange={(newFilters) => {
+                        setShowModal(false); // Close modal after confirming
+                        onFilterChange(newFilters);
+                    }}
+                />
             </Modal>
         </div>
     );
