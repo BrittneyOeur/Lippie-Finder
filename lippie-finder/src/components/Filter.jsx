@@ -1,6 +1,23 @@
+/**
+ * @fileoverview Displays options where users are able to filter the type of 
+ * lip products they'd like to see
+ * 
+ * @author Brittney Oeur
+ * @date January 3, 2025
+ * 
+ * @description
+ * This React component allows users to filter out the type of products they wish 
+ * to see, which includes, specific brands, categories, and ingredients
+ * 
+ * @dependencies
+ * - React (for the building component)
+ * - /src/filter.css (for styling)
+ */
+
 import '/src/filter.css';
 import React, { useEffect, useState } from "react";
 
+//
 function FilterList({ text, onClick, isSelected }) {
     const filterStyle = {
         listStyle: "none",
@@ -19,6 +36,7 @@ function FilterList({ text, onClick, isSelected }) {
     );
 }
 
+// Fetches
 async function FetchDataOptions() {
     try {
         const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick");
@@ -62,7 +80,7 @@ async function FetchDataOptions() {
     }
 }
 
-function Filter({ filters, onFilterChange }) {
+function Filter({ onFilterChange }) {
     const [currentPage, setCurrentPage] = useState("main");
 
     const [brands, setBrands] = useState([]);
@@ -76,12 +94,12 @@ function Filter({ filters, onFilterChange }) {
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
 
-    {/* Goes back to the main page */}
+    // Goes back to the main page
     const handleBack = () => {
         setCurrentPage("main");
     };
 
-    {/* Includes all the possible options for each filter types */}
+    // Includes all the possible options for each filter types 
     const handleSelection = (filterType, option) => {
         switch (filterType) {
             case "brand":
@@ -165,6 +183,8 @@ function Filter({ filters, onFilterChange }) {
                             </h2>
                         </div>
                     </div>
+
+                    {/* Button section */}
                     <div style={{ paddingTop: "200px", display: "flex", margin: "auto", justifyContent: "center", alignItems: "center", gap: "20px" }}>
                         <button                  
                             onClick={() => onFilterChange({ brand: selectedBrands, category: selectedCategories, tag: selectedTags })}>
@@ -184,6 +204,7 @@ function Filter({ filters, onFilterChange }) {
                 </div>
             )}
 
+            {/* Brand page */}
             {currentPage === "brand" && (
                 <div>
                     <div style={{ display: "flex", fontWeight: "bolder" }}>
@@ -206,10 +227,11 @@ function Filter({ filters, onFilterChange }) {
                 </div>
             )}
 
+            {/* Category page */}
             {currentPage === "category" && (
                 <div>
                     <div style={{ display: "flex" }}>
-                        <p onClick={handleBack} style={{ cursor: "pointer", fontWeight: "bolder"  }}>
+                        <p onClick={handleBack} style={{ cursor: "pointer", fontWeight: "bolder" }}>
                             &lt;
                         </p>
                         <h1 style={{ margin: "auto", justifyContent: "center" }}>Choose Category</h1>
@@ -228,6 +250,7 @@ function Filter({ filters, onFilterChange }) {
                 </div>
             )}
 
+            {/* Ingredient page */}
             {currentPage === "ingredient" && (
                 <div>
                     <div style={{ display: "flex" }}>

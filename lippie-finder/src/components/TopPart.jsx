@@ -1,3 +1,21 @@
+/**
+ * @fileoverview 
+ * Displays the search bar and filter button on the webpage.
+ * 
+ * @author Brittney Oeur
+ * @date January 3, 2025
+ * 
+ * @description
+ * This React component allows user to search an lip product (based on the brand's name),
+ * as well as, utilize the filter button to select specific products
+ * they want to see
+ * 
+ * @dependencies
+ * - React (for the building component)
+ * - react-router-dom (for accessing URL parameters)
+ * - Modal (for creating filter pop-up)
+ */
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
@@ -25,7 +43,7 @@ function Button({ text, color, width, fontSize, onClick }) {
 // Set app root for accessibility
 Modal.setAppElement("#root");
 
-function TopPart({ filters, onFilterChange, onSearch, onResetProducts }) {
+function TopPart({ onFilterChange, onSearch, onResetProducts }) {
     const [showModal, setShowModal] = useState(false);
     const [searchInput, setSearchInput] = useState("");
 
@@ -108,7 +126,6 @@ function TopPart({ filters, onFilterChange, onSearch, onResetProducts }) {
                 }}
             >
                 <Filter
-                    filters={filters}
                     onFilterChange={(newFilters) => {
                         setShowModal(false); // Close modal after confirming
                         onFilterChange(newFilters);

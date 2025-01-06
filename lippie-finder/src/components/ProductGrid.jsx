@@ -1,17 +1,18 @@
-/* 
- Page displays many different lip products from various brands:
- - Brand Name
- - Product Type
- - Product Name
- - Price
- - Description
-
- Users will be able to click any of the product card, which will redirect them to a dedicated page of the product
-
- Users may also click on the hyperlink that redirects them to the product page,
- where they are able to purchase the product
-*/
-
+/**
+ * @fileoverview Display different types of lip products from various brands.
+ * 
+ * @author Brittney Oeur
+ * @date January 3, 2025
+ * 
+ * @description
+ * This React component is where it lists out all the existing lip products (coming from Makeup API),
+ * where users are able to click any of the product card,
+ * which will redirect them to a dedicated page of the product
+ * 
+ * @dependencies
+ * - React (for the building component)
+ * - react-router-dom (for accessing URL parameters)
+ */
 
 import ProductCard from "./ProductCard";
 import React, { useEffect, useState } from "react";

@@ -1,19 +1,17 @@
 /**
- * @fileoverview Displays detailed informtion on selected lip product.
+ * @fileoverview Display individual lip products
  * 
  * @author Brittney Oeur
  * @date January 3, 2025
  * 
  * @description
- * This React component fetches and displays the details of a lip product
- * based on the 'id' obtained from the URL. It shows the product's name,
- * image, price, description, available colors, and brand.
- * Users can click on a color to update the background color of the page.
+ * This React component are the indivdiual products that is being displayed
+ * inside of 'ProductGrid.jsx,' it includes information such as
+ * the name of the product, brand and price
  * 
  * @dependencies
  * - React (for the building component)
- * - react-router-dom (for accessing URL parameters)
- * - /src/details.css (for styling)
+ * - /src/card.css (for styling)
  */
 
 import '/src/card.css'
