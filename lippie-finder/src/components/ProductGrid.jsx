@@ -1,3 +1,18 @@
+/* 
+ Page displays many different lip products from various brands:
+ - Brand Name
+ - Product Type
+ - Product Name
+ - Price
+ - Description
+
+ Users will be able to click any of the product card, which will redirect them to a dedicated page of the product
+
+ Users may also click on the hyperlink that redirects them to the product page,
+ where they are able to purchase the product
+*/
+
+
 import ProductCard from "./ProductCard";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";

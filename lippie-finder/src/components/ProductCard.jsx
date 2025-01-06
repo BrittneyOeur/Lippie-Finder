@@ -1,3 +1,21 @@
+/**
+ * @fileoverview Displays detailed informtion on selected lip product.
+ * 
+ * @author Brittney Oeur
+ * @date January 3, 2025
+ * 
+ * @description
+ * This React component fetches and displays the details of a lip product
+ * based on the 'id' obtained from the URL. It shows the product's name,
+ * image, price, description, available colors, and brand.
+ * Users can click on a color to update the background color of the page.
+ * 
+ * @dependencies
+ * - React (for the building component)
+ * - react-router-dom (for accessing URL parameters)
+ * - /src/details.css (for styling)
+ */
+
 import '/src/card.css'
 
 function DetailText({ text, fontSize, color }) {
@@ -16,7 +34,7 @@ function ProductCard({ product, onClick }) {
 
     return (
         <div className='Card' onClick={onClick} style={{cursor: "pointer"}}>
-            <img src={product.api_featured_image} alt={product.name} style={{ width: "100%", height: "200px", objectFit: "cover"}} />
+            <img src={product.api_featured_image} alt={product.name} style={{ width: "100%", height: "200px", objectFit: "cover", backgroundColor: "white" }} />
             <div className='DetailSection'>
                 <DetailText text={product.name} fontSize={22} color="rgb(27, 27, 27)"/>
                 <DetailText text={product.brand} fontSize={18} color="rgb(122, 48, 48)"/>

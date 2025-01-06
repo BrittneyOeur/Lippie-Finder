@@ -165,9 +165,8 @@ function Filter({ filters, onFilterChange }) {
                             </h2>
                         </div>
                     </div>
-                    <div>
-                        <button 
-                            style={{margin: "10px"}} 
+                    <div style={{ paddingTop: "200px", display: "flex", margin: "auto", justifyContent: "center", alignItems: "center", gap: "20px" }}>
+                        <button                  
                             onClick={() => onFilterChange({ brand: selectedBrands, category: selectedCategories, tag: selectedTags })}>
                             CONFIRM
                         </button>
@@ -187,11 +186,14 @@ function Filter({ filters, onFilterChange }) {
 
             {currentPage === "brand" && (
                 <div>
-                    <p onClick={handleBack} style={{ cursor: "pointer" }}>
-                        &lt; Back
-                    </p>
-                    <h1>Choose Brand</h1>
-                    <ul style={{ padding: 0 }}>
+                    <div style={{ display: "flex", fontWeight: "bolder" }}>
+                        <p onClick={handleBack} style={{ cursor: "pointer" }}>
+                            &lt;
+                        </p>
+                        <h1 style={{ margin: "auto", justifyContent: "center" }}>Choose Brand</h1>
+                    </div>
+                    
+                    <ul style={{ padding: 0, margin: "auto" }}>
                         {brands.map((brand) => (
                             <FilterList
                                 key={brand}
@@ -206,10 +208,13 @@ function Filter({ filters, onFilterChange }) {
 
             {currentPage === "category" && (
                 <div>
-                    <p onClick={handleBack} style={{ cursor: "pointer" }}>
-                        &lt; Back
-                    </p>
-                    <h1>Choose Category</h1>
+                    <div style={{ display: "flex" }}>
+                        <p onClick={handleBack} style={{ cursor: "pointer", fontWeight: "bolder"  }}>
+                            &lt;
+                        </p>
+                        <h1 style={{ margin: "auto", justifyContent: "center" }}>Choose Category</h1>
+                    </div>
+                    
                     <ul style={{ padding: 0 }}>
                         {categories.map((category) => (
                             <FilterList
@@ -225,10 +230,13 @@ function Filter({ filters, onFilterChange }) {
 
             {currentPage === "ingredient" && (
                 <div>
-                    <p onClick={handleBack} style={{ cursor: "pointer" }}>
-                        &lt; Back
-                    </p>
-                    <h1>Choose Ingredient</h1>
+                    <div style={{ display: "flex" }}>
+                        <p onClick={handleBack} style={{ cursor: "pointer", fontWeight: "bolder"  }}>
+                            &lt;
+                        </p>
+                        <h1 style={{ margin: "auto", justifyContent: "center" }}>Choose Ingredient</h1>
+                    </div>
+                    
                     <ul style={{ padding: 0 }}>
                         {tags.map((tag) => (
                             <FilterList

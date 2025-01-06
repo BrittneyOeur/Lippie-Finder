@@ -1,17 +1,20 @@
-/* 
- Page includes detailed information on an specific product, which will include:
- - Brand Name
- - Product Type
- - Product Name
- - Price
- - Description
-
- Users will be able to click any of the existing colors the product may have, 
- which will change the background color to that color
-
- Users may also click on the hyperlink that redirects them to the product page,
- where they are able to purchase the product
-*/
+/**
+ * @fileoverview Displays detailed informtion on selected lip product.
+ * 
+ * @author Brittney Oeur
+ * @date January 3, 2025
+ * 
+ * @description
+ * This React component fetches and displays the details of a lip product
+ * based on the 'id' obtained from the URL. It shows the product's name,
+ * image, price, description, available colors, and brand.
+ * Users can click on a color to update the background color of the page.
+ * 
+ * @dependencies
+ * - React (for the building component)
+ * - react-router-dom (for accessing URL parameters)
+ * - /src/details.css (for styling)
+ */
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -40,6 +43,8 @@ function ProductDetails() {
         setSelectedColor(color); // Track the selected color
     }
 
+    const toUSD = Number(product.price * 0.71).toFixed(2);
+
     return (
         <>
             <div className="containerGrid" style={{ backgroundColor: backgroundColor, paddingLeft: "300px", paddingRight: "300px" }}>
@@ -47,8 +52,11 @@ function ProductDetails() {
                     <div className="productSection" style={{ backgroundColor: "white" }}>
                         <h1>{product.name}</h1>
                         <img src={product.api_featured_image} alt={product.name} style={{width: "15vw", margin: "auto"}}/>
-                        <a href={product.website_link} style={{ display: "flex", justifyContent: "center", textAlign: "center"}}>{product.brand}</a>
-                        <p>{product.price}</p>
+                        <div style={{ display: "flex", justifyContent: "center", textAlign: "center", alignItems: "center", fontSize: "25px" }}>
+                            <p>Store: </p>
+                            <a href={product.website_link} style={{ display: "flex", justifyContent: "center", textAlign: "center", marginLeft: "10px" }}>{product.brand}</a>
+                        </div> 
+                        <p style={{ fontSize: "20px" }}>{`$${toUSD} (USD)`}</p>
                     </div>
                     <div className="productDescription" style={{ padding: "50px", textAlign: "left", color: "white", overflow: "hidden", width: "50vw" }}>
                         <div className="productColors">
