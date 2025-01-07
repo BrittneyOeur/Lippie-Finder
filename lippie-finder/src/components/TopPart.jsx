@@ -66,7 +66,7 @@ function TopPart({ onFilterChange, onSearch, onResetProducts }) {
                 style={{
                     color: "white",
                     cursor: "pointer",
-                    width: "17vw",
+                    width: "11.2vw",
                     margin: "auto",
                     marginTop: "50px",
                     marginBottom: "20px",
@@ -100,7 +100,10 @@ function TopPart({ onFilterChange, onSearch, onResetProducts }) {
 
             <div
                 className="filterSort"
-                style={{ display: "flex", padding: "15px", gap: "15px" }}
+                style={{ 
+                    display: "flex",
+                    padding: "15px"
+                }}
             >
                 <Button
                     text="Filter"

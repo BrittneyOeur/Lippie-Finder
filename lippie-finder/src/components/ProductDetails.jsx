@@ -38,7 +38,6 @@ function ProductDetails() {
 
     const colors = product.product_colors;
 
-    // Includes all the possible options for each filter types 
     const changeBackgroundColor = (color) => {
         if (selectedColor === color) {
             // Deselect the color if it's already selected

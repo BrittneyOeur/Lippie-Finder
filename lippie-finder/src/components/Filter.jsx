@@ -155,10 +155,13 @@ function Filter({ onFilterChange }) {
     }
 
     return (
-        <div className="filter-container">
+        <div className="filter-container"
+            style={{ color: "black" }}
+        >
             {currentPage === "main" && (
                 <div>
                     <h1>Filter Options</h1>
+                    <sub>Can only sele</sub>
                     <div className="filter-options">
                         <div className="specific-filter">
                             <h2>BRAND</h2>

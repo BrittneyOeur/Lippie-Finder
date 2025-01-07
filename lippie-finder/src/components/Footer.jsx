@@ -2,11 +2,12 @@ function Footer() {
     return (
         <div style={{ 
             backgroundColor: "#d19da4",
-            width: "100%",
+            display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "7vh",
-            display: "flex",
+            width: "100%",
+            minHeight: "5vh",
+            padding: "5px 0"
         }}>
             <div style={{ 
                 display: "flex",
