@@ -5,9 +5,9 @@
  * @date January 3, 2025
  * 
  * @description
- * This React component is where it lists out all the existing lip products (coming from Makeup API),
- * where users are able to click any of the product card,
- * which will redirect them to a dedicated page of the product
+ * A React component that lists all available lip products retrieved from the Makeup API. 
+ * Each product is displayed as a clickable card, allowing users to navigate to a 
+ * dedicated page with detailed information about the selected product.
  * 
  * @dependencies
  * - React (for the building component)

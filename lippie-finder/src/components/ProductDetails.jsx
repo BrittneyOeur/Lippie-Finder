@@ -23,8 +23,8 @@ import '/src/details.css'
 function ProductDetails() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
-    const [backgroundColor, setBackGroundColor] = useState(null);
-    const [selectedColor, setSelectedColor] = useState(null); // Track the selected color
+    const [backgroundColor, setBackGroundColor] = useState([]);
+    const [selectedColor, setSelectedColor] = useState(null); 
 
     useEffect(() => {
         fetch(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`)
@@ -38,48 +38,101 @@ function ProductDetails() {
 
     const colors = product.product_colors;
 
+    // Includes all the possible options for each filter types 
     const changeBackgroundColor = (color) => {
-        setBackGroundColor(color);
-        setSelectedColor(color); // Track the selected color
-    }
+        if (selectedColor === color) {
+            // Deselect the color if it's already selected
+            setSelectedColor(null);
+            setBackGroundColor([]); // Optionally reset background color to default
+        } else {
+            // Select the new color
+            setSelectedColor(color);
+            setBackGroundColor([color]);
+        }
+    };
 
     const toUSD = Number(product.price * 0.71).toFixed(2);
 
     return (
         <>
-            <div className="containerGrid" style={{ backgroundColor: backgroundColor, paddingLeft: "300px", paddingRight: "300px" }}>
+            <div className="containerGrid" 
+                style={{ 
+                    backgroundColor: backgroundColor, 
+                    paddingLeft: "300px", 
+                    paddingRight: "300px",
+                    margin: 0,
+                }}
+            >
                 <div className="anotherContainer">
-                    <div className="productSection" style={{ backgroundColor: "white" }}>
-                        <h1>{product.name}</h1>
-                        <img src={product.api_featured_image} alt={product.name} style={{width: "15vw", margin: "auto"}}/>
-                        <div style={{ display: "flex", justifyContent: "center", textAlign: "center", alignItems: "center", fontSize: "25px" }}>
-                            <p>Store: </p>
-                            <a href={product.website_link} style={{ display: "flex", justifyContent: "center", textAlign: "center", marginLeft: "10px" }}>{product.brand}</a>
+                    <div className="productSection" style={{ backgroundColor: "#9c6f74" }}>
+                        <h2 style={{
+                            color: "white"
+                        }}>
+                            {product.name}
+                        </h2>
+                        <img src={product.api_featured_image} alt={product.name} style={{ width: "15vw", margin: "auto" }}/>
+                        <div style={{ 
+                            display: "flex", 
+                            justifyContent: "center", 
+                            textAlign: "center", 
+                            alignItems: "center", 
+                            fontSize: "25px" 
+                        }}>
+                        <a 
+                            href={product.website_link} 
+                            style={{ 
+                                display: "flex", 
+                                justifyContent: "center", 
+                                textAlign: "center", 
+                                marginLeft: "10px" 
+                            }}>
+                                {product.brand}
+                        </a>
                         </div> 
-                        <p style={{ fontSize: "20px" }}>{`$${toUSD} (USD)`}</p>
+                        <p style={{ 
+                            fontSize: "20px", 
+                            color: "white" 
+                        }}>
+                            {`$${toUSD} (USD)`}
+                        </p>
                     </div>
-                    <div className="productDescription" style={{ padding: "50px", textAlign: "left", color: "white", overflow: "hidden", width: "50vw" }}>
+                    <div className="productDescription" 
+                        style={{ 
+                            padding: "50px", 
+                            textAlign: "left", 
+                            color: "white", 
+                            overflow: "hidden", 
+                            width: "50vw" 
+                    }}>
                         <div className="productColors">
-                            <h2>Select color: </h2>
+                            <h2 style={{ color: "#9c6f74" }}>Color Options: </h2>
                             {colors.map((color, index) => (
-                                <p 
-                                    className="colors" 
+                                <p className="colors" 
                                     key={index} 
                                     onClick={() => changeBackgroundColor(color.hex_value)} 
-                                    style={{ cursor: "pointer", color: selectedColor === color.hex_value ? "black" : "white", // Highlight the selected color
-                                    }}
-                                >
-                                    {color.colour_name}
+                                    style={{ 
+                                        cursor: "pointer", 
+                                        color: selectedColor === color.hex_value ? "#9c6f74" : "#b17f85"
+                                    }}>
+                                        {color.colour_name}
                                 </p>
                             ))}
                         </div>
                         <div style={{ display: "flex"}}>
-                            <h2>Type: </h2>
-                            <p style={{ padding: "9px", textTransform: "capitalize", fontSize: "18px" }}>{(product.category).replace("_", " ")}</p>
+                            <h2 style={{ color: "#9c6f74" }}>Type: </h2>
+                            <p style={{ 
+                                padding: "9px", 
+                                textTransform: "capitalize", 
+                                fontSize: "18px",
+                                color: "#b17f85"
+                            }}>
+                                {(product.category).replace("_", " ")}
+                            </p>
                         </div>
-                        
-                        <h2>Description: </h2>  
-                        <p>{product.description}</p>   
+
+                            <h2 style={{ color: "#9c6f74" }}>Description: </h2>  
+                            <p style={{ color: "#b17f85" }}>{product.description}</p>   
+
                     </div>
                 </div> 
             </div>

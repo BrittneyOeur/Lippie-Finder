@@ -1,15 +1,12 @@
 @font-face {
-  font-family: 'Delius';
-  src: url('./assets/DeliusSwashCaps-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-family: 'Playwrite';
+  src: url('./assets/PlaywriteAUSA-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  line-height: 1.5;
-  font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
 
@@ -23,32 +20,29 @@
 }
 
 body {
+  font-family: 'Playwrite', sans-serif;
   margin: 0;
 }
 
 button {
   color: white;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border-style: solid;
+  border-color: rgb(177, 127, 133);
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   transition: background-color 0.10s;
 }
 button:hover {
-  background-color: #c47878;
+  background-color: rgb(156, 111, 116);
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-  }
-  a:hover {
-    color: #747bff;
-  }
   button {
-    background-color: #e79999;
+    width: 100%;
+    max-width: 150px;
+    background-color: rgb(177, 127, 133);
   }
 }

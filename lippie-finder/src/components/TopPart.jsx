@@ -6,14 +6,14 @@
  * @date January 3, 2025
  * 
  * @description
- * This React component allows user to search an lip product (based on the brand's name),
- * as well as, utilize the filter button to select specific products
- * they want to see
+ * A React component that allows users to search for lip products by brand name 
+ * and use the filter button to select specific products they want to view. 
+ * The filter button opens a modal pop-up for additional filtering options.
  * 
  * @dependencies
- * - React (for the building component)
- * - react-router-dom (for accessing URL parameters)
- * - Modal (for creating filter pop-up)
+ * - React (for building the component)
+ * - react-router-dom (for handling navigation and URL parameters)
+ * - Modal (for creating the filter pop-up)
  */
 
 import React, { useState } from "react";
@@ -27,7 +27,7 @@ function Button({ text, color, width, fontSize, onClick }) {
         color: color,
         fontSize: fontSize + "px",
         width: width,
-        padding: "10px",
+        padding: "7px",
         border: "none",
         borderRadius: "5px",
         cursor: "pointer",
@@ -56,7 +56,7 @@ function TopPart({ onFilterChange, onSearch, onResetProducts }) {
     };
 
     const handleSearchClick = () => {
-        onSearch(searchInput); // Pass the search input up to the parent
+        onSearch(searchInput);
     };
 
     return (
@@ -64,6 +64,7 @@ function TopPart({ onFilterChange, onSearch, onResetProducts }) {
             <h1
                 onClick={handleLogoClick}
                 style={{
+                    color: "white",
                     cursor: "pointer",
                     width: "17vw",
                     margin: "auto",
@@ -82,12 +83,16 @@ function TopPart({ onFilterChange, onSearch, onResetProducts }) {
                     placeholder="Search lip brand..."
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
-                    style={{ marginRight: "10px", padding: "9px", width: "220px" }}
+                    style={{ 
+                        marginRight: "10px", 
+                        padding: "9px", 
+                        width: "220px" 
+                    }}
                 />
                 <Button
                     text="Search"
                     color="white"
-                    width="70px"
+                    width="100px"
                     fontSize={12}
                     onClick={handleSearchClick}
                 />

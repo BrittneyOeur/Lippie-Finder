@@ -5,13 +5,9 @@
     align-items: center;
 }
 
-.options:hover {
-    color: red;
-}
-
 .option-arrow {
     cursor: pointer;
-    color: pink;
+    color: rgb(209, 157, 164);
     font-weight: 500;
     font-size: 30px;
     text-align: right;

@@ -1,13 +1,12 @@
 /**
- * @fileoverview Displays options where users are able to filter the type of 
- * lip products they'd like to see
+ * @fileoverview Filters lip products by brand, category, and ingredients.
  * 
  * @author Brittney Oeur
  * @date January 3, 2025
  * 
  * @description
- * This React component allows users to filter out the type of products they wish 
- * to see, which includes, specific brands, categories, and ingredients
+ * This React component Allows users to filter lip products based on specific 
+ * criteria such as brand, category, and ingredients.
  * 
  * @dependencies
  * - React (for the building component)
@@ -17,7 +16,6 @@
 import '/src/filter.css';
 import React, { useEffect, useState } from "react";
 
-//
 function FilterList({ text, onClick, isSelected }) {
     const filterStyle = {
         listStyle: "none",
@@ -25,7 +23,8 @@ function FilterList({ text, onClick, isSelected }) {
         justifyContent: "center",
         alignItems: "center",
         display: "flex",
-        backgroundColor: isSelected ? "pink" : "white",
+        backgroundColor: isSelected ? "#b17f85" : "white",
+        color: isSelected ? "white" : "black",
         cursor: "pointer",
     };
 
@@ -36,7 +35,6 @@ function FilterList({ text, onClick, isSelected }) {
     );
 }
 
-// Fetches
 async function FetchDataOptions() {
     try {
         const response = await fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick");
@@ -185,7 +183,14 @@ function Filter({ onFilterChange }) {
                     </div>
 
                     {/* Button section */}
-                    <div style={{ paddingTop: "200px", display: "flex", margin: "auto", justifyContent: "center", alignItems: "center", gap: "20px" }}>
+                    <div style={{ 
+                        paddingTop: "200px", 
+                        display: "flex", 
+                        margin: "auto", 
+                        justifyContent: "center", 
+                        alignItems: "center", 
+                        gap: "20px" }}
+                    >
                         <button                  
                             onClick={() => onFilterChange({ brand: selectedBrands, category: selectedCategories, tag: selectedTags })}>
                             CONFIRM
@@ -194,7 +199,6 @@ function Filter({ onFilterChange }) {
                             setSelectedBrands([]);
                             setSelectedCategories([]);
                             setSelectedTags([]);
-                            localStorage.removeItem("filters");
                             onFilterChange({ brand: [], category: [], tag: [] });
                         }}>
                             RESET
@@ -208,7 +212,7 @@ function Filter({ onFilterChange }) {
             {currentPage === "brand" && (
                 <div>
                     <div style={{ display: "flex", fontWeight: "bolder" }}>
-                        <p onClick={handleBack} style={{ cursor: "pointer" }}>
+                        <p onClick={handleBack} style={{ cursor: "pointer", fontSize: "25px", color: "#d19da4" }}>
                             &lt;
                         </p>
                         <h1 style={{ margin: "auto", justifyContent: "center" }}>Choose Brand</h1>
@@ -231,7 +235,7 @@ function Filter({ onFilterChange }) {
             {currentPage === "category" && (
                 <div>
                     <div style={{ display: "flex" }}>
-                        <p onClick={handleBack} style={{ cursor: "pointer", fontWeight: "bolder" }}>
+                        <p onClick={handleBack} style={{ cursor: "pointer", fontSize: "25px", color: "#d19da4"  }}>
                             &lt;
                         </p>
                         <h1 style={{ margin: "auto", justifyContent: "center" }}>Choose Category</h1>
@@ -254,7 +258,7 @@ function Filter({ onFilterChange }) {
             {currentPage === "ingredient" && (
                 <div>
                     <div style={{ display: "flex" }}>
-                        <p onClick={handleBack} style={{ cursor: "pointer", fontWeight: "bolder"  }}>
+                        <p onClick={handleBack} style={{ cursor: "pointer", fontSize: "25px", color: "#d19da4"  }}>
                             &lt;
                         </p>
                         <h1 style={{ margin: "auto", justifyContent: "center" }}>Choose Ingredient</h1>
