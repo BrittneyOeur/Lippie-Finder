@@ -18,7 +18,7 @@ import "/src/card.css"
 function DetailText({ text, fontSize, color }) {
     const textStyle = {
         color: color, 
-        fontSize: fontSize + "px"
+        fontSize: fontSize + "vw"
     };
 
     return (
@@ -48,9 +48,9 @@ function ProductCard({ product, onClick }) {
                     }}
             />
             <div className='DetailSection'>
-                <DetailText text={product.name} fontSize={22} color="#9c6f74"/>
-                <DetailText text={product.brand} fontSize={18} color="#a8777d"/>
-                <DetailText text={`$${toUSD} (USD)`} fontSize={15} color="#d19da4"/>
+                <DetailText text={product.name} fontSize={1.5} color="#9c6f74"/>
+                <DetailText text={product.brand} fontSize={1.2} color="#a8777d"/>
+                <DetailText text={`$${toUSD} (USD)`} fontSize={1} color="#d19da4"/>
             </div>
         </div>
     );
