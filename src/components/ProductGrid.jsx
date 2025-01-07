@@ -69,11 +69,11 @@ function ProductGrid({ search, filters }) {
     
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <p style={{ color: "black" }}>Loading...</p>;
     }
 
     if (error) {
-        return <p>Error: {error}</p>
+        return <p style={{ color: "black" }}>Error: {error}</p>
     }
 
     const handleCardClick = (id) => {
