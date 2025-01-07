@@ -161,7 +161,7 @@ function Filter({ onFilterChange }) {
             {currentPage === "main" && (
                 <div>
                     <h1>Filter Options</h1>
-                    <sub>Can only sele</sub>
+                    <sub style={{ color: "grey" }}>Can only select one option per filter</sub>
                     <div className="filter-options">
                         <div className="specific-filter">
                             <h2>BRAND</h2>
