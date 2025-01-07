@@ -67,7 +67,7 @@ function TopPart({ onFilterChange, onSearch, onResetProducts }) {
                     color: "white",
                     cursor: "pointer",
                     width: "11.2vw",
-                    minWidth: "17vw",
+                    minWidth: "21vw",
                     margin: "auto",
                     marginTop: "50px",
                     marginBottom: "20px",

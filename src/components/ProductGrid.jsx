@@ -82,7 +82,7 @@ function ProductGrid({ search, filters }) {
 
     return (
         <div className="containerGrid">
-            <div style={{display: "flex", flexWrap: "wrap", gap: "70px 70px", justifyContent: "center"}}>
+            <div style={{display: "flex", flexWrap: "wrap", gap: "70px 50px", justifyContent: "center"}}>
                 {products.map((product) => (
                     <ProductCard 
                         key={product.id}

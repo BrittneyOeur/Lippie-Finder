@@ -1,22 +1,40 @@
 .Card {
     background-color: rgb(225, 212, 213);
-    min-width: 18vw;
-    max-width: 15vw;
-    max-height: (50%, 40vh);
+    width: clamp(12vw, 15vw, 18vw); 
+    height: clamp(40vh, 60vh, 80vh);
     transition: 0.3s ease;
     justify-content: center;
     align-items: center;
     word-wrap: break-word;
     overflow-wrap: break-word;
     outline-style: solid;
+    overflow-y: auto;
     outline-color: white;
+}
+
+@media (max-width: 768px) {
+    .Card {
+        width: 90%; /* Adjusts to smaller screens */
+        height: auto; /* Flexible height */
+        outline-color: lightgray; /* Subtle outline for smaller devices */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .Card {
+        width: 20%; /* Medium screens (tablets) */
+        height: 50vh; /* Taller card for tablets */
+    }
+}
+
+@media (min-width: 1201px) {
+    .Card {
+        width: 15%; /* Larger screens (desktops) */
+        height: 55vh; /* Standard height */
+    }
 }
 
 .Card:hover {
     box-shadow: 0px 0px 16px 2px rgb(156, 111, 116);
     transition: 0.3s ease;
-}
-
-.DetailSection {
-    margin: 25px;
 }

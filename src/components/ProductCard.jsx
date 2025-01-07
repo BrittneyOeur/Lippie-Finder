@@ -18,7 +18,7 @@ import "/src/card.css"
 function DetailText({ text, fontSize, color }) {
     const textStyle = {
         color: color, 
-        fontSize: fontSize + "vw"
+        fontSize: `clamp(${fontSize - 0.5}rem, ${fontSize}vw, ${fontSize + 1}rem)`
     };
 
     return (
@@ -36,7 +36,7 @@ function ProductCard({ product, onClick }) {
                 cursor: "pointer", 
                 borderColor: "#9c6f74", 
                 borderStyle: "solid", 
-                borderWidth: "2px" 
+                borderWidth: "2px"
             }}>
             <img src={product.api_featured_image} 
                 alt={product.name} 
@@ -47,10 +47,10 @@ function ProductCard({ product, onClick }) {
                     backgroundColor: "white" 
                     }}
             />
-            <div className='DetailSection'>
-                <DetailText text={product.name} fontSize={1.5} color="#9c6f74"/>
-                <DetailText text={product.brand} fontSize={1.2} color="#a8777d"/>
-                <DetailText text={`$${toUSD} (USD)`} fontSize={1} color="#d19da4"/>
+            <div className="DetailSection">
+                <DetailText text={product.name} fontSize={1.2} color="#9c6f74"/>
+                <DetailText text={product.brand} fontSize={1.1} color="#a8777d"/>
+                <DetailText text={`$${toUSD} (USD)`} fontSize={0.8} color="#d19da4"/>
             </div>
         </div>
     );
