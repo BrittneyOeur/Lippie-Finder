@@ -12,25 +12,45 @@
     outline-color: white;
 }
 
+/* Default text size for DetailSection */
+.DetailSection p {
+    font-size: clamp(1rem, 2vw, 2rem); /* Default font-size scaling using vw */
+}
+
+/* Small screen adjustments */
 @media (max-width: 768px) {
     .Card {
         width: 90%; /* Adjusts to smaller screens */
         height: auto; /* Flexible height */
         outline-color: lightgray; /* Subtle outline for smaller devices */
     }
+    
+    .DetailSection p {
+        font-size: clamp(1.4rem, 5vw, 2.5rem); /* Bigger text on smaller screens */
+    }
 }
 
+/* Medium screen (tablets) adjustments */
 @media (min-width: 769px) and (max-width: 1200px) {
     .Card {
         width: 20%; /* Medium screens (tablets) */
         height: 50vh; /* Taller card for tablets */
     }
+    
+    .DetailSection p {
+        font-size: clamp(1.2rem, 3vw, 2rem); /* Balanced scaling for tablets */
+    }
 }
 
+/* Large screen (desktops) adjustments */
 @media (min-width: 1201px) {
     .Card {
         width: 15%; /* Larger screens (desktops) */
         height: 55vh; /* Standard height */
+    }
+    
+    .DetailSection p {
+        font-size: clamp(1rem, 2vw, 1.5rem); /* Smaller text for desktops */
     }
 }
 
