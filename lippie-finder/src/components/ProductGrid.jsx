@@ -48,8 +48,8 @@ function ProductGrid({ search, filters }) {
                 }
     
                 const queryString = queryParams.length > 0 ? `&${queryParams.join("&")}` : "";
-                const response = await fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
-                console.log(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
+                const response = await fetch(`https://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
+                console.log(`https://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick${queryString}`);
     
                 if (!response.ok) {
                     throw new Error("ERROR: Server error");

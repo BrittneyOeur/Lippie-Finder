@@ -27,7 +27,7 @@ function ProductDetails() {
     const [selectedColor, setSelectedColor] = useState(null); 
 
     useEffect(() => {
-        fetch(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`)
+        fetch(`https://makeup-api.herokuapp.com/api/v1/products/${id}.json`)
             .then((response) => response.json())
             .then((data) => setProduct(data));
     }, [id]);
