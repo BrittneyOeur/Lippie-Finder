@@ -69,7 +69,16 @@ function ProductDetails() {
                         }}>
                             {product.name}
                         </h2>
-                        <img src={product.api_featured_image} alt={product.name} style={{ width: "15vw", margin: "auto" }}/>
+                        <div style={{ backgroundColor: "white" }}>
+                            <img src={product.api_featured_image} 
+                                alt={product.name} 
+                                style={{ 
+                                    width: "15vw", 
+                                    margin: "auto",
+                                    backgroundColor: "white"
+                                }}
+                            />
+                        </div>
                         <div style={{ 
                             display: "flex", 
                             justifyContent: "center", 
