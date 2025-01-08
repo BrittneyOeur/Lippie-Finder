@@ -66,11 +66,11 @@ function TopPart({ onFilterChange, onSearch, onResetProducts }) {
                 style={{
                     color: "white",
                     cursor: "pointer",
-                    width: "11.2vw",
-                    minWidth: "21vw",
+                    minWidth: "10vw",
+                    maxWidth: "15vw",
                     margin: "auto",
                     marginTop: "50px",
-                    marginBottom: "20px",
+                    marginBottom: "20px"
                 }}
             >
                 Lippie Finder
