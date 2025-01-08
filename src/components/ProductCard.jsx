@@ -42,7 +42,8 @@ function ProductCard({ product, onClick }) {
                 alt={product.name} 
                 style={{ 
                     width: "100%", 
-                    height: "200px", 
+                    minHeight: "270px", 
+                    maxHeight: "200px",
                     objectFit: "cover", 
                     backgroundColor: "white" 
                     }}
