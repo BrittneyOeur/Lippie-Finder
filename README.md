@@ -1,8 +1,12 @@
-# React + Vite
+# Lippie Finder
+[Website Link](https://lippie-finder.vercel.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![LippieFinder](https://github.com/BrittneyOeur/Lippie-Finder/blob/main/lippie-finder.png)
+![DetailPage](https://github.com/BrittneyOeur/Lippie-Finder/blob/main/lippie-finder-detail-page.png)
 
-Currently, two official plugins are available:
+A website powered by the [MakeUp API](https://makeup-api.herokuapp.com/), designed to help users search for specific lip products.
+**Features include:**
+- **Search functionality:** Find lip products by brand.
+- **Filtering system:** Refine results by brand, category, or ingredients.
+- **Product detail pages:** View in-depth information about each lip product."
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
