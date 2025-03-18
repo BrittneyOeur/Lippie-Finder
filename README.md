@@ -8,5 +8,5 @@ A website powered by the [MakeUp API](https://makeup-api.herokuapp.com/), design
 **Features include:**
 - **Search functionality:** Find lip products by brand.
 - **Filtering system:** Refine results by brand, category, or ingredients.
-- **Product detail pages:** View in-depth information about each lip product."
+- **Product detail pages:** View in-depth information about each lip product.
 
